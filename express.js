@@ -1,6 +1,11 @@
 import express from 'express';
 const app = express();
 
+const users = [
+    { id: 1, name: 'Yonatan' },
+    { id: 2, name: 'David' },
+    { id: 3, name: 'Sarah' }
+];
 
 //בקשת גט לכל הurl 
 app.get('/', (req, res) => {
@@ -15,6 +20,13 @@ app.get('/about', (req, res) => {
     res.end();
 });
 
+
+app.get('/users/:id', (req, res) => {
+    
+    const userId = req.params.id;
+    console.log(userId);
+    res.json(users);
+});
 
 //מתחיל לההזין לשרת
 app.listen(3000, () => {
